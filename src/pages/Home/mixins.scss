@@ -1,0 +1,25 @@
+@use '/src/assets/global.scss' as *;
+
+@mixin widthSession() {
+  width: calc(100% - 8rem - 8rem);
+}
+
+@mixin widthImg() {
+  border-radius: 10px;
+  width: 100%;
+}
+
+@mixin ellipsisText() {
+  line-clamp: 3;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  display: -webkit-box;
+  text-overflow: ellipsis;
+  text-align: start;
+  overflow: hidden;
+}
+
+@mixin transparentText() {
+  color: $white-color;
+  background-color: transparent;
+}
