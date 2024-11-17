@@ -141,12 +141,23 @@
 </template>
 
 <script setup>
+defineOptions({
+  name: 'MyHome',
+});
+
 import { reactive } from 'vue';
-import MyPodcast from './MyPodcast.vue';
+import MyPodcast from './HomePodcast.vue';
+
+import img1 from '/src/components/imgs/blog-img1.png';
+import img2 from '/src/components/imgs/blog-img2.png';
+import img3 from '/src/components/imgs/blog-img3.png';
+import img4 from '/src/components/imgs/blog-img5.png';
+import img5 from '/src/components/imgs/blog-img6.png';
+import img6 from '/src/components/imgs/blog-img4.png';
 
 const listCard = reactive([
   {
-    img_path: '/src/components/imgs/blog-img1.png',
+    img_path: img1,
     time_post: 'May 28, 2023',
     time_read: '2 min read',
     icon_ellipsis_path: '/src/components/svg/ellipsis-icon.svg',
@@ -156,7 +167,7 @@ const listCard = reactive([
     comments_count: 0,
   },
   {
-    img_path: '/src/components/imgs/blog-img2.png',
+    img_path: img2,
     time_post: 'May 28, 2023',
     time_read: '1 min read',
     icon_ellipsis_path: '/src/components/svg/ellipsis-icon.svg',
@@ -166,7 +177,7 @@ const listCard = reactive([
     comments_count: 0,
   },
   {
-    img_path: '/src/components/imgs/blog-img3.png',
+    img_path: img3,
     time_post: 'May 28, 2023',
     time_read: '2 min read',
     icon_ellipsis_path: '/src/components/svg/ellipsis-icon.svg',
@@ -176,7 +187,7 @@ const listCard = reactive([
     comments_count: 0,
   },
   {
-    img_path: '/src/components/imgs/blog-img5.png',
+    img_path: img4,
     time_post: 'May 28, 2023',
     time_read: '2 min read',
     icon_ellipsis_path: '/src/components/svg/ellipsis-icon.svg',
@@ -186,7 +197,7 @@ const listCard = reactive([
     comments_count: 0,
   },
   {
-    img_path: '/src/components/imgs/blog-img6.png',
+    img_path: img5,
     time_post: 'May 28, 2023',
     time_read: '1 min read',
     icon_ellipsis_path: '/src/components/svg/ellipsis-icon.svg',
@@ -196,7 +207,7 @@ const listCard = reactive([
     comments_count: 0,
   },
   {
-    img_path: '/src/components/imgs/blog-img4.png',
+    img_path: img6,
     time_post: 'May 28, 2023',
     time_read: '1 min read',
     icon_ellipsis_path: '/src/components/svg/ellipsis-icon.svg',

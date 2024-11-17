@@ -125,7 +125,11 @@
   </footer>
 </template>
 
-<script setup></script>
+<script setup>
+defineOptions({
+  name: 'MyFooter',
+});
+</script>
 
 <style module lang="scss">
 @use '/src/assets/global.scss' as *;

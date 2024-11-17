@@ -8,6 +8,11 @@ const publicRoutes = [
         name: 'home',
         component: () => import('@/pages/Home/MyHome.vue'),
       },
+      {
+        path: '/podcast',
+        name: 'podcast',
+        component: () => import('@/pages/Podcast/MyPodcast.vue'),
+      },
     ],
   },
 ];

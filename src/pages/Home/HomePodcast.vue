@@ -46,6 +46,12 @@
   </div>
 </template>
 
+<script setup>
+defineOptions({
+  name: 'HomePodcast',
+});
+</script>
+
 <style lang="scss" scoped>
 @use '/src/assets/global.scss' as *;
 @use '/src/pages/Home/mixins.scss' as *;

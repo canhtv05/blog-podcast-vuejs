@@ -9,6 +9,10 @@
 </template>
 
 <script setup>
+defineOptions({
+  name: 'DefaultLayout',
+});
+
 import MyFooter from '../components/MyFooter/MyFooter.vue';
 import MyHeader from '../components/MyHeader/MyHeader.vue';
 </script>

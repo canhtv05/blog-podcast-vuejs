@@ -19,7 +19,7 @@
               <RouterLink to="/" class="nav-link header__nav-link__a">Blog</RouterLink>
             </li>
             <li class="nav-item" style="margin: 0 0.5rem">
-              <RouterLink to="/" class="nav-link header__nav-link__a">Podcast</RouterLink>
+              <RouterLink to="/podcast" class="nav-link header__nav-link__a">Podcast</RouterLink>
             </li>
             <li class="nav-item" style="margin: 0 0.5rem">
               <RouterLink to="/" class="nav-link header__nav-link__a">About</RouterLink>
@@ -42,6 +42,9 @@
 
 <script setup>
 import { RouterLink } from 'vue-router';
+defineOptions({
+  name: 'MyHeader',
+});
 </script>
 
 <style scoped lang="scss">

@@ -9,6 +9,10 @@ $primary-2: #bcafbd;
   font-weight: 400;
 }
 
+@mixin widthSession() {
+  width: calc(100% - 8rem - 8rem);
+}
+
 .row.custom-gutter {
   --bs-gutter-x: 10rem;
   // --bs-gutter-y: 10rem;
