@@ -264,16 +264,24 @@ const handleDeleteValueSearch = () => {
   padding-left: 0.6rem;
   position: relative;
   z-index: 1;
+  opacity: 0.6;
 
   &:focus {
     border: none;
     box-shadow: none;
     background-color: transparent;
+    opacity: 1;
+  }
+
+  &:hover::placeholder {
+    opacity: 1;
+    color: $black-color;
   }
 
   &:not(:placeholder-shown) {
     border-bottom: 1px solid #000;
     border-radius: 0;
+    opacity: 1;
   }
 
   &:not(:placeholder-shown) ~ .span-input-search-icon-delete {

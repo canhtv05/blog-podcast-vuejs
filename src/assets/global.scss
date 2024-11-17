@@ -13,6 +13,21 @@ $primary-2: #bcafbd;
   width: calc(100% - 8rem - 8rem);
 }
 
+@mixin btn() {
+  padding: 0.86rem 1.6rem;
+  background-color: $primary-1;
+  border: 1px solid $black-color;
+  color: $white-color;
+  transition:
+    color ease-in 0.2s,
+    background-color ease-in 0.2s;
+
+  &:hover {
+    color: $black-color;
+    background-color: $primary-2;
+  }
+}
+
 .row.custom-gutter {
   --bs-gutter-x: 10rem;
   // --bs-gutter-y: 10rem;
@@ -20,6 +35,7 @@ $primary-2: #bcafbd;
 
 html {
   font-size: 62.5%;
+  scroll-behavior: smooth;
 }
 
 html::-webkit-scrollbar {
@@ -39,7 +55,6 @@ html::-webkit-scrollbar-track {
 
 body {
   background-color: $bgc !important;
-  height: 5000px;
 }
 
 a {

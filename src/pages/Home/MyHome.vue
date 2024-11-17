@@ -117,7 +117,7 @@
                     double click me to add your own content and make changes to the font. I’m a great place for you to
                     tell a story and let your users know a little more about you.
                   </p>
-                  <div class="center-button-sm">
+                  <div class="center-button-sm" @click="handleNavigateHome">
                     <button class="btn about-container__aside--btn-read-more text-center">Read More</button>
                   </div>
                 </div>
@@ -138,6 +138,7 @@
       <MyPodcast />
     </div>
   </main>
+  <MySubscribeFooter />
 </template>
 
 <script setup>
@@ -146,6 +147,7 @@ defineOptions({
 });
 
 import { reactive } from 'vue';
+import { useRouter } from 'vue-router';
 import MyPodcast from './HomePodcast.vue';
 
 import img1 from '/src/components/imgs/blog-img1.png';
@@ -154,6 +156,13 @@ import img3 from '/src/components/imgs/blog-img3.png';
 import img4 from '/src/components/imgs/blog-img5.png';
 import img5 from '/src/components/imgs/blog-img6.png';
 import img6 from '/src/components/imgs/blog-img4.png';
+import MySubscribeFooter from '@/layouts/components/MyFooter/MySubscribeFooter.vue';
+
+const router = useRouter();
+
+const handleNavigateHome = () => {
+  router.push('/about');
+};
 
 const listCard = reactive([
   {

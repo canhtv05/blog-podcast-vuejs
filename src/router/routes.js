@@ -13,6 +13,11 @@ const publicRoutes = [
         name: 'podcast',
         component: () => import('@/pages/Podcast/MyPodcast.vue'),
       },
+      {
+        path: '/about',
+        name: 'about',
+        component: () => import('@/pages/About/MyAbout.vue'),
+      },
     ],
   },
 ];

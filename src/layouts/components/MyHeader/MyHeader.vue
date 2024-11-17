@@ -16,22 +16,34 @@
         <div class="collapse navbar-collapse w-100 justify-content-md-end" id="collapsibleNavbar">
           <ul class="navbar-nav">
             <li class="nav-item" style="margin: 0 0.5rem">
-              <RouterLink to="/" class="nav-link header__nav-link__a">Blog</RouterLink>
+              <RouterLink to="/" class="nav-link header__nav-link__a" :class="{ active: nameCurrentURI === 'home' }"
+                >Blog</RouterLink
+              >
             </li>
             <li class="nav-item" style="margin: 0 0.5rem">
-              <RouterLink to="/podcast" class="nav-link header__nav-link__a">Podcast</RouterLink>
+              <RouterLink
+                to="/podcast"
+                class="nav-link header__nav-link__a"
+                :class="{ active: nameCurrentURI === 'podcast' }"
+                >Podcast</RouterLink
+              >
             </li>
             <li class="nav-item" style="margin: 0 0.5rem">
-              <RouterLink to="/" class="nav-link header__nav-link__a">About</RouterLink>
+              <RouterLink
+                to="/about"
+                class="nav-link header__nav-link__a"
+                :class="{ active: nameCurrentURI === 'about' }"
+                >About</RouterLink
+              >
             </li>
             <li class="nav-item" style="margin: 0 0.5rem">
-              <RouterLink to="/" class="nav-link header__nav-link__a">Contact</RouterLink>
+              <a href="/#my-subscriber" class="nav-link header__nav-link__a">Contact</a>
             </li>
           </ul>
         </div>
       </div>
       <form action="/" class="container-md form-search">
-        <button class="form-search__button_search" type="submit">
+        <button class="form-search__button_search">
           <font-awesome-icon :icon="['fas', 'magnifying-glass']" class="form-search__icon-search" />
         </button>
         <input type="text" class="form-control input-group__input rounded-pill" placeholder="Search..." />
@@ -41,7 +53,33 @@
 </template>
 
 <script setup>
+import { ref, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
+import { useRoute } from 'vue-router';
+
+const currentURI = useRoute();
+let nameCurrentURI = ref('home');
+
+watchEffect(() => {
+  switch (currentURI.name) {
+    case 'home': {
+      nameCurrentURI.value = 'home';
+      break;
+    }
+    case 'podcast': {
+      nameCurrentURI.value = 'podcast';
+      break;
+    }
+    case 'about': {
+      nameCurrentURI.value = 'about';
+      break;
+    }
+    default: {
+      break;
+    }
+  }
+});
+
 defineOptions({
   name: 'MyHeader',
 });
@@ -80,6 +118,10 @@ $width-input: 4.2rem;
   line-height: 45px;
   padding: 0 1rem;
   position: relative;
+
+  &.active {
+    color: $primary-1 !important;
+  }
 
   &::after {
     position: absolute;
