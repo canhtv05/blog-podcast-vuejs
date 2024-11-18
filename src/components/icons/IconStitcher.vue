@@ -13,7 +13,7 @@
 
 <script setup>
 defineOptions({
-  name: 'IconApplePodcast',
+  name: 'IconStitcher',
 });
 defineProps({
   width: {

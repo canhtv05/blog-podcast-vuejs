@@ -33,6 +33,10 @@ $primary-2: #bcafbd;
   // --bs-gutter-y: 10rem;
 }
 
+.row.custom-gutterx-5 {
+  --bs-gutter-x: 5rem;
+}
+
 html {
   font-size: 62.5%;
   scroll-behavior: smooth;

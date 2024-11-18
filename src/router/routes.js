@@ -14,6 +14,11 @@ const publicRoutes = [
         component: () => import('@/pages/Podcast/MyPodcast.vue'),
       },
       {
+        path: '/podcast/episode',
+        name: 'episode',
+        component: () => import('@/pages/Podcast/MyPodcastEpisode.vue'),
+      },
+      {
         path: '/about',
         name: 'about',
         component: () => import('@/pages/About/MyAbout.vue'),

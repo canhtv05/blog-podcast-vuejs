@@ -5,6 +5,7 @@ import IconGooglePodcast from '@/components/icons/IconGooglePodcast.vue';
 import IconRSSFeed from '@/components/icons/IconRSSFeed.vue';
 import IconSpotify from '@/components/icons/IconSpotify.vue';
 import IconStitcher from '@/components/icons/IconStitcher.vue';
+import { useRouter } from 'vue-router';
 import { reactive, markRaw, ref, watch, watchEffect } from 'vue';
 
 defineOptions({
@@ -13,6 +14,8 @@ defineOptions({
 
 const valueSearch = ref('');
 const isShowPodcast = ref(true);
+const router = useRouter();
+const { setIndexList } = useListCardStore();
 
 let debouncedSearch;
 
@@ -57,6 +60,8 @@ import img3 from '@/components/imgs/blog-img12.png';
 import img4 from '@/components/imgs/blog-img13.png';
 import img5 from '@/components/imgs/blog-img14.png';
 import img6 from '@/components/imgs/blog-img15.png';
+import IconPlayVideoPodcast from '@/components/icons/IconPlayVideoPodcast.vue';
+import { useListCardStore } from '@/stores/podcast';
 
 const listCard = reactive([
   {
@@ -108,6 +113,11 @@ const listCard = reactive([
 const handleDeleteValueSearch = () => {
   valueSearch.value = '';
 };
+
+const handleNavigateToEpisode = (index) => {
+  setIndexList(index);
+  router.push('/podcast/episode');
+};
 </script>
 
 <template>
@@ -151,19 +161,26 @@ const handleDeleteValueSearch = () => {
       </div>
 
       <div v-if="isShowPodcast" class="row gy-3 mt-5 gx-5">
-        <div
+        <RouterLink
+          to="/podcast/episode"
           v-for="(item, index) in listCard"
           :key="index"
-          class="col-lg-4 col-md-6 col-sm-12 d-flex align-content-center justify-content-center flex-column h-100"
+          class="col-lg-4 col-md-6 col-sm-12 d-flex align-content-center justify-content-center flex-column h-100 card-container"
+          @click="handleNavigateToEpisode(index)"
         >
-          <img :src="item.img" :alt="`img${index}`" class="img-fluid" />
+          <div class="card-image">
+            <div class="card-img-abs">
+              <IconPlayVideoPodcast />
+            </div>
+            <img :src="item.img" :alt="`img${index}`" class="img-fluid shadow" />
+          </div>
           <h2 class="h2 title-podcast">{{ item.title }}</h2>
           <p class="card-post-time">
             <span style="font-family: 'avenir lt'">{{ item.post_time }}</span> |
             <span style="font-family: 'avenir lt'">{{ item.time_read }}</span>
           </p>
           <p class="card-content">{{ item.content }}</p>
-        </div>
+        </RouterLink>
       </div>
       <div v-else>
         <div class="d-flex justify-content-center align-items-center flex-column not-found-container">
@@ -183,6 +200,7 @@ const handleDeleteValueSearch = () => {
   opacity: 0;
   animation-delay: 0.5s;
   animation: fadeIn 0.5s ease-out forwards;
+  margin-bottom: 10rem;
 }
 
 .title,
@@ -194,6 +212,7 @@ const handleDeleteValueSearch = () => {
 .aside-container {
   display: flex;
   flex-direction: column;
+
   width: 100%;
   height: 100%;
   padding: 5rem 0;
@@ -298,6 +317,46 @@ const handleDeleteValueSearch = () => {
   font-size: 1.6rem;
 }
 
+.card-image {
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    right: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.2s ease-in;
+  }
+}
+
+.card-img-abs {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 3;
+  opacity: 0;
+}
+
+.card-container {
+  cursor: pointer;
+
+  &:hover > .card-image::after {
+    opacity: 1;
+  }
+
+  &:hover > .card-image > .card-img-abs {
+    opacity: 1;
+    transition: opacity 0.2s ease-in;
+  }
+}
+
 .title-podcast {
   padding: 0.2rem 0;
   margin-top: 2rem;
@@ -391,9 +450,17 @@ const handleDeleteValueSearch = () => {
 }
 
 @media (max-width: 576px) {
+  .header-container {
+    margin-bottom: 4rem !important;
+  }
+
   .title,
   .sub-title {
     font-size: 2.7rem;
+  }
+
+  .not-found-container {
+    padding: 10rem 0;
   }
 }
 
