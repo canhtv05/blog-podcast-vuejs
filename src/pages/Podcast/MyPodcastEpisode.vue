@@ -1,5 +1,5 @@
 <script setup>
-import { useListCardStore } from '@/stores/podcast';
+import { useListPodCastStore } from '@/stores/podcast';
 import IconApplePodcast from '@/components/icons/IconApplePodcast.vue';
 import IconGooglePodcast from '@/components/icons/IconGooglePodcast.vue';
 import IconRSSFeed from '@/components/icons/IconRSSFeed.vue';
@@ -72,7 +72,7 @@ const updateTime = () => {
   }
 };
 
-const { indexList, handleShowItemByIndex } = useListCardStore();
+const { indexList, handleShowItemByIndex } = useListPodCastStore();
 
 const { title, content, img, post_time, time_read, path_sound } = handleShowItemByIndex(indexList);
 console.log(title, content, img, post_time, time_read, path_sound);

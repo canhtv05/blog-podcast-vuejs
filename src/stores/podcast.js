@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia';
-import { reactive, ref } from 'vue';
+import { reactive } from 'vue';
 
 import img1 from '@/components/imgs/blog-img10.png';
 import img2 from '@/components/imgs/blog-img11.png';
@@ -7,9 +7,10 @@ import img3 from '@/components/imgs/blog-img12.png';
 import img4 from '@/components/imgs/blog-img13.png';
 import img5 from '@/components/imgs/blog-img14.png';
 import img6 from '@/components/imgs/blog-img15.png';
+import useSessionStorage from '@/components/hooks/useSessionStorage';
 
-export const useListCardStore = defineStore('podcast', () => {
-  const indexList = ref(0);
+export const useListPodCastStore = defineStore('podcast', () => {
+  const indexList = useSessionStorage('indexPodCast', 0);
 
   const list = reactive([
     {

@@ -29,6 +29,7 @@
               v-for="(item, index) in listCard"
               :key="index"
               class="col-lg-4 col-md-6 col-sm-12 all-stories__content-item text-center d-flex align-content-center justify-content-center"
+              @click="handleNavigateComment(index)"
             >
               <div class="all-stories__content-item--img">
                 <img
@@ -36,6 +37,7 @@
                   :alt="`img ${index}`"
                   loading="lazy"
                   class="all-stories__content-item--img img-fluid shadow"
+                  style="cursor: pointer"
                 />
                 <div class="all-stories__content-item--info-wrapper d-flex flex-column">
                   <!-- posting time img -->
@@ -157,11 +159,18 @@ import img4 from '/src/components/imgs/blog-img5.png';
 import img5 from '/src/components/imgs/blog-img6.png';
 import img6 from '/src/components/imgs/blog-img4.png';
 import MySubscribeFooter from '@/layouts/components/MyFooter/MySubscribeFooter.vue';
+import { useListStoryStore } from '@/stores/stories';
 
 const router = useRouter();
+const { setIndexList } = useListStoryStore();
 
 const handleNavigateHome = () => {
   router.push('/about');
+};
+
+const handleNavigateComment = (index) => {
+  setIndexList(index);
+  router.push('/comment');
 };
 
 const listCard = reactive([

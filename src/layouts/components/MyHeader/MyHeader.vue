@@ -39,6 +39,24 @@
             <li class="nav-item" style="margin: 0 0.5rem">
               <a href="/#my-subscriber" class="nav-link header__nav-link__a">Contact</a>
             </li>
+            <li class="nav-item" style="margin: 0 0 0.5rem">
+              <div
+                class="header__nav-link__a"
+                v-if="isLogged.login.value.is_login"
+                style="cursor: pointer; user-select: none"
+                @click="handleShowModalLogout"
+              >
+                Log out
+              </div>
+              <div
+                class="header__nav-link__a"
+                v-else
+                style="cursor: pointer; user-select: none"
+                @click="handleShowModalLogin"
+              >
+                Log in
+              </div>
+            </li>
           </ul>
         </div>
       </div>
@@ -53,7 +71,8 @@
 </template>
 
 <script setup>
-import { ref, watchEffect } from 'vue';
+import { useLoginStore } from '@/stores/login';
+import { computed, ref, watchEffect } from 'vue';
 import { RouterLink } from 'vue-router';
 import { useRoute } from 'vue-router';
 
@@ -75,14 +94,25 @@ watchEffect(() => {
       break;
     }
     default: {
+      nameCurrentURI.value = 'default';
       break;
     }
   }
 });
 
+const isLogged = computed(() => useLoginStore());
+
 defineOptions({
   name: 'MyHeader',
 });
+
+const handleShowModalLogin = () => {
+  isLogged.value.handleShowLoginModal();
+};
+
+const handleShowModalLogout = () => {
+  isLogged.value.handleShowLogoutModal();
+};
 </script>
 
 <style scoped lang="scss">

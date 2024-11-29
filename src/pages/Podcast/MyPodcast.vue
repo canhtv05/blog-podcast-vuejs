@@ -15,7 +15,7 @@ defineOptions({
 const valueSearch = ref('');
 const isShowPodcast = ref(true);
 const router = useRouter();
-const { setIndexList } = useListCardStore();
+const { setIndexList } = useListPodCastStore();
 
 let debouncedSearch;
 
@@ -61,7 +61,7 @@ import img4 from '@/components/imgs/blog-img13.png';
 import img5 from '@/components/imgs/blog-img14.png';
 import img6 from '@/components/imgs/blog-img15.png';
 import IconPlayVideoPodcast from '@/components/icons/IconPlayVideoPodcast.vue';
-import { useListCardStore } from '@/stores/podcast';
+import { useListPodCastStore } from '@/stores/podcast';
 
 const listCard = reactive([
   {

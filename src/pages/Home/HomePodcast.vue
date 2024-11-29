@@ -24,7 +24,12 @@
                 a story and let your users know a little more about you.
               </p>
               <div class="center-button-sm">
-                <button class="btn podcast-container__aside--btn-read-more text-center">Listen</button>
+                <button
+                  class="btn podcast-container__aside--btn-read-more text-center"
+                  @click="handleNavigateToPodcast"
+                >
+                  Listen
+                </button>
               </div>
 
               <div class="center-button-sm">
@@ -47,9 +52,17 @@
 </template>
 
 <script setup>
+import { useRouter } from 'vue-router';
+
 defineOptions({
   name: 'HomePodcast',
 });
+
+const router = useRouter();
+
+const handleNavigateToPodcast = () => {
+  router.push('/podcast');
+};
 </script>
 
 <style lang="scss" scoped>

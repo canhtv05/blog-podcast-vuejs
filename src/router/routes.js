@@ -23,6 +23,11 @@ const publicRoutes = [
         name: 'about',
         component: () => import('@/pages/About/MyAbout.vue'),
       },
+      {
+        path: '/comment',
+        name: 'comment',
+        component: () => import('@/pages/Comment/MyComment.vue'),
+      },
     ],
   },
 ];
